@@ -1,3 +1,39 @@
 .App {
-    background-color: aquamarine;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+
+    .header {
+        height: 70px;
+        background-color: slateblue;
+    }
+
+    .underheader {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: row nowrap;
+
+        .menu {
+            width: 300px;
+            background-color: skyblue;
+
+            li {
+                list-style-type: none; /* Убираем маркеры */
+
+                a {
+                    color: purple;
+
+                    &:active {
+                        color: red;
+                    }
+                }
+                
+            }
+        }
+
+        .main {
+            flex-grow: 1;
+            background-color: white;
+        }
+    }
 }
