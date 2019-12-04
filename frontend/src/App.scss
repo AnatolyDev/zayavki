@@ -6,6 +6,25 @@
     .header {
         height: 70px;
         background-color: slateblue;
+
+        .header-main {
+            display: flex;
+            flex-flow: row nowrap;
+            height: 100%;
+            text-align: center;
+
+            .header-logo {
+                width: 10%;
+            }
+
+            .header-title {
+                flex-grow: 1;
+            }
+
+            .header-signin {
+                width: 5%;
+            }
+        }
     }
 
     .underheader {
