@@ -8,21 +8,20 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { NavLink } from 'react-router-dom';
+import { grey } from '@material-ui/core/colors';
 
 const Header = () => {
 
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [state, setState] = React.useState(false);
+    const [auth, setAuth] = useState(true);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [openDrawer, setOpenDrawer] = useState(false);
     const open = Boolean(anchorEl);
 
     const toggleDrawer = (open) => event => {
@@ -30,33 +29,42 @@ const Header = () => {
           return;
         }
     
-        setState(open);
+        setOpenDrawer(open);
       };
 
-      const sideList = side => (
+      const sideList = () => (
         <div
           className='menu-list'
           role="presentation"
-          onClick={toggleDrawer(side, false)}
-          onKeyDown={toggleDrawer(side, false)}
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            {/*['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <NavLink to='/dff' style={{textDecoration: 'none', color: grey}}>
+                <ListItem button key={text} onClick={toggleDrawer(false)}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} style={{color: 'black'}}/>
+                </ListItem>              
+              </NavLink>
+            ))*/}
+
+            <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
+              <ListItem button onClick={toggleDrawer(false)}>
+                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+                <ListItemText primary='Главная' style={{color: 'black'}}/>
+              </ListItem>              
+            </NavLink>
+
+            <NavLink to='/catalog' style={{textDecoration: 'none', color: grey}}>
+              <ListItem button onClick={toggleDrawer(false)}>
+                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+                <ListItemText primary='Каталог' style={{color: 'black'}}/>
+              </ListItem>              
+            </NavLink>
+
           </List>
           <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
         </div>
       );
   
@@ -74,12 +82,12 @@ const Header = () => {
 
     return (
         <div className='header-main'>
-            <Drawer open={state} onClose={toggleDrawer(false)}>
-                {sideList('left')}
+            <Drawer open={openDrawer} onClose={toggleDrawer(false)}>
+                {sideList()}
             </Drawer>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className='menu-button' color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
+                    <IconButton edge="start" className='menu-button' color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className='header-title'>

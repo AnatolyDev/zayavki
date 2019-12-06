@@ -12,6 +12,8 @@
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1; }
+  .App .header a div {
+    color: grey; }
   .App .underheader {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
