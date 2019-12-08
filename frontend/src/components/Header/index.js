@@ -14,12 +14,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import { grey } from '@material-ui/core/colors';
 
 const Header = () => {
 
-    const [auth, setAuth] = useState(true);
+    const [auth, setAuth] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openDrawer, setOpenDrawer] = useState(false);
     const open = Boolean(anchorEl);
@@ -40,14 +41,6 @@ const Header = () => {
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {/*['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <NavLink to='/dff' style={{textDecoration: 'none', color: grey}}>
-                <ListItem button key={text} onClick={toggleDrawer(false)}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                  <ListItemText primary={text} style={{color: 'black'}}/>
-                </ListItem>              
-              </NavLink>
-            ))*/}
 
             <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
               <ListItem button onClick={toggleDrawer(false)}>
@@ -71,6 +64,10 @@ const Header = () => {
     const handleChange = event => {
       setAuth(event.target.checked);
     };
+
+    const handleLogin = () => {
+      setAuth(true);
+    }
   
     const handleMenu = event => {
       setAnchorEl(event.currentTarget);
@@ -123,6 +120,17 @@ const Header = () => {
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
                             </Menu>
                         </div>
+                )}
+                {!auth && (
+                  <div>
+                    <Button>
+                      <NavLink to='/signin' style={{textDecoration: 'none'}}>
+                        <ListItem button>
+                          <ListItemText primary='Логин' style={{color: 'white'}}/>
+                        </ListItem>              
+                      </NavLink>
+                    </Button>
+                  </div>
                 )}
                 </Toolbar>
             </AppBar>

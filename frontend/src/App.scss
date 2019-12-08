@@ -39,6 +39,16 @@
         .main {
             flex-grow: 1;
             background-color: white;
+
+            .signin {
+                margin: 20%;
+                background-color: #cfe8fc;
+                height: 300px;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: space-around;
+                align-items: center;
+            }
         }
     }
 }
