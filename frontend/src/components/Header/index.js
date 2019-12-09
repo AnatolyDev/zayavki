@@ -18,9 +18,7 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import { grey } from '@material-ui/core/colors';
 
-const Header = () => {
-
-    const [auth, setAuth] = useState(false);
+const Header = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [openDrawer, setOpenDrawer] = useState(false);
     const open = Boolean(anchorEl);
@@ -33,41 +31,33 @@ const Header = () => {
         setOpenDrawer(open);
       };
 
-      const sideList = () => (
-        <div
-          className='menu-list'
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <List>
+    const sideList = () => (
+      <div
+        className='menu-list'
+        role="presentation"
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+      >
+        <List>
 
-            <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
-              <ListItem button onClick={toggleDrawer(false)}>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <ListItemText primary='Главная' style={{color: 'black'}}/>
-              </ListItem>              
-            </NavLink>
+          <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
+            <ListItem button onClick={toggleDrawer(false)}>
+              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+              <ListItemText primary='Главная' style={{color: 'black'}}/>
+            </ListItem>              
+          </NavLink>
 
-            <NavLink to='/catalog' style={{textDecoration: 'none', color: grey}}>
-              <ListItem button onClick={toggleDrawer(false)}>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <ListItemText primary='Каталог' style={{color: 'black'}}/>
-              </ListItem>              
-            </NavLink>
+          <NavLink to='/catalog' style={{textDecoration: 'none', color: grey}}>
+            <ListItem button onClick={toggleDrawer(false)}>
+              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+              <ListItemText primary='Каталог' style={{color: 'black'}}/>
+            </ListItem>              
+          </NavLink>
 
-          </List>
-          <Divider />
-        </div>
-      );
-  
-    const handleChange = event => {
-      setAuth(event.target.checked);
-    };
-
-    const handleLogin = () => {
-      setAuth(true);
-    }
+        </List>
+        <Divider />
+      </div>
+    );
   
     const handleMenu = event => {
       setAnchorEl(event.currentTarget);
@@ -90,7 +80,7 @@ const Header = () => {
                     <Typography variant="h6" className='header-title'>
                         Заголовок
                     </Typography>
-                    {auth && (
+                    {props.currentUser && (
                         <div>
                             <IconButton
                                 aria-label="account of current user"
@@ -116,12 +106,12 @@ const Header = () => {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={handleClose}>Profile {props.currentUser}</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
                             </Menu>
                         </div>
                 )}
-                {!auth && (
+                {!props.currentUser && (
                   <div>
                     <Button>
                       <NavLink to='/signin' style={{textDecoration: 'none'}}>

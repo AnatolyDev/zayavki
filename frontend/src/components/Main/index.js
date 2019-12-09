@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from '../Home';
 import Catalog from '../Catalog';
-import SignIn from '../SignIn';
+import SignIn from '../../containers/SignIn';
 
 const Main = () => {
     return (

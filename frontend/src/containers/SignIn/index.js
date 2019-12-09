@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
+import { connect } from 'react-redux';
+
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { setUser } from '../../actions/auth.js';
 
-const SignIn = () => {
+const SignIn = (props) => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -18,8 +21,16 @@ const SignIn = () => {
         setPassword(e.target.value)
     }
 
+    const isUser = (login, password) => {
+        if (login && password) return true;
+        return false;
+    }
+
     const loginClick = () => {
-        alert(login + ' ' + password)
+        if (isUser(login, password)) {
+            props.setCurrentUser(login)
+        }
+            else alert('Логин или пароль пустой');
     }
 
     return (
@@ -55,4 +66,16 @@ const SignIn = () => {
     )
 }
 
-export default SignIn;
+const mapStateToProps = state => ({
+    user : state.auth.user
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCurrentUser: (login) => {
+            dispatch(setUser(login));
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
