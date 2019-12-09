@@ -8,8 +8,8 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
 const columns = [
-    { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+    { id: 'name', label: 'Name', minWidth: 170, align: 'center' },
+    { id: 'code', label: 'ISO\u00a0Code', minWidth: 100, align: 'center' },
   ];
 
 const Catalog = ({ rows }) => {
@@ -44,18 +44,18 @@ const Catalog = ({ rows }) => {
                         </TableHead>
                         <TableBody>
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                {columns.map(column => {
-                                    const value = row[column.id];
-                                    return (
-                                        <TableCell key={column.id} align={column.align}>
-                                            {column.format && typeof value === 'number' ? column.format(value) : value}
-                                        </TableCell>
-                                    );
-                                })}
-                                </TableRow>
-                            );
+                                return (
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                        {columns.map(column => {
+                                            const value = row[column.id];
+                                            return (
+                                                <TableCell key={column.id} align={column.align}>
+                                                    {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                </TableCell>
+                                            );
+                                        })}
+                                    </TableRow>
+                                );
                             })}
                         </TableBody>
                     </Table>

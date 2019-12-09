@@ -25,26 +25,31 @@ export const zayavkiAPI = {
                             {
                                 "id" : 101,
                                 "name" : "i3",
+                                "code" : "code101",
                                 "photo" : "1.jpg"
                             },
                             {
                                 "id" : 102,
                                 "name" : "i5",
+                                "code" : "code102",
                                 "photo" : "2.jpg"
                             },
                             {
                                 "id" : 103,
                                 "name" : "i7",
+                                "code" : "code103",
                                 "photo" : "3.jpg"
                             },
                             {
                                 "id" : 104,
                                 "name" : "AMD K6",
+                                "code" : "code104",
                                 "photo" : "4.jpg"
                             },
                             {
                                 "id" : 105,
                                 "name" : "AMD Athlon x2",
+                                "code" : "code105",
                                 "photo" : "5.jpg"
                             }
                         ]
