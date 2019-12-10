@@ -25,8 +25,32 @@ const CatalogContainer = (props) => {
 }
 
 const mapDispatchToProps = {
-    addUnit
+    addUnit : (x) => {
+            return dispatch => {
+                setTimeout(
+                    () => dispatch(addUnit(x)),
+                    2000
+                )
+            }
+        }  
 }
+
+/*const mapDispatchToProps = (dispatch) => ({
+    addUnit : (x) => {
+        const asyncAdd = () => {
+            return dispatch => {
+                setTimeout(
+                    () => dispatch(addUnit(x)),
+                    2000
+                )
+            }
+        }
+        dispatch(asyncAdd(x))
+        
+    }
+        
+    
+})*/
 
 export default connect(
     null,

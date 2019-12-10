@@ -49,7 +49,7 @@ const Catalog = ({ rows, clickFunc, buttonText }) => {
                                             {row.code}
                                         </TableCell>
                                         <TableCell align='center'>
-                                            <Button variant='contained' color='primary' onClick={row => clickFunc(row)}>
+                                            <Button variant='contained' color='primary' onClick={() => clickFunc(row)}>
                                                 {buttonText}
                                             </Button>
                                         </TableCell>
