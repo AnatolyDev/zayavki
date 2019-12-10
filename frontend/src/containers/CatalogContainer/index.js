@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Catalog from '../../components/Catalog';
 import { zayavkiAPI } from '../../api';
+import { connect } from 'react-redux';
+import { addUnit } from '../../actions/units.js';
 
-const rows = [
-    {name: 'name1', code: 'code1'},
-    {name: 'name2', code: 'code2'},
-    {name: 'name3', code: 'code3'},
-    {name: 'name4', code: 'code4'},
-]
-
-const CatalogContainer = () => {
+const CatalogContainer = (props) => {
 
     const [rows, setRows] = useState([]);
 
@@ -25,8 +20,15 @@ const CatalogContainer = () => {
     )
 
     return (
-        <Catalog rows={rows}/>
+        <Catalog rows={rows} clickFunc={props.addUnit} buttonText='Добавить' />
     )
 }
 
-export default CatalogContainer;
+const mapDispatchToProps = {
+    addUnit
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(CatalogContainer);

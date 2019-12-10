@@ -51,6 +51,42 @@ export const zayavkiAPI = {
                                 "name" : "AMD Athlon x2",
                                 "code" : "code105",
                                 "photo" : "5.jpg"
+                            },
+                            {
+                                "id" : 106,
+                                "name" : "AMD Athlon 2 x2",
+                                "code" : "code106",
+                                "photo" : "6.jpg"
+                            },
+                            {
+                                "id" : 107,
+                                "name" : "AMD Athlon x3",
+                                "code" : "code107",
+                                "photo" : "7.jpg"
+                            },
+                            {
+                                "id" : 108,
+                                "name" : "AMD Athlon x4",
+                                "code" : "code108",
+                                "photo" : "8.jpg"
+                            },
+                            {
+                                "id" : 109,
+                                "name" : "AMD Athlon x6",
+                                "code" : "code109",
+                                "photo" : "9.jpg"
+                            },
+                            {
+                                "id" : 110,
+                                "name" : "AMD Phenom",
+                                "code" : "code110",
+                                "photo" : "10.jpg"
+                            },
+                            {
+                                "id" : 111,
+                                "name" : "AMD Phenom 2",
+                                "code" : "code111",
+                                "photo" : "11.jpg"
                             }
                         ]
                     })

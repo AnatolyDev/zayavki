@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,12 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
-const columns = [
-    { id: 'name', label: 'Name', minWidth: 170, align: 'center' },
-    { id: 'code', label: 'ISO\u00a0Code', minWidth: 100, align: 'center' },
-  ];
-
-const Catalog = ({ rows }) => {
+const Catalog = ({ rows, clickFunc, buttonText }) => {
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -31,29 +27,32 @@ const Catalog = ({ rows }) => {
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
-                                {columns.map(column => (
-                                    <TableCell
-                                        key={column.id}
-                                        align={column.align}
-                                        style={{ minWidth: column.minWidth }}
-                                    >
-                                        {column.label}
-                                    </TableCell>
-                                ))}
+                                <TableCell align='center'>
+                                    Наименование
+                                </TableCell>
+                                <TableCell align='center'>
+                                    Шифр
+                                </TableCell>
+                                <TableCell align='center'>
+                                    Действие
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                        {columns.map(column => {
-                                            const value = row[column.id];
-                                            return (
-                                                <TableCell key={column.id} align={column.align}>
-                                                    {column.format && typeof value === 'number' ? column.format(value) : value}
-                                                </TableCell>
-                                            );
-                                        })}
+                                        <TableCell align='center'>
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell align='center'>
+                                            {row.code}
+                                        </TableCell>
+                                        <TableCell align='center'>
+                                            <Button variant='contained' color='primary' onClick={row => clickFunc(row)}>
+                                                {buttonText}
+                                            </Button>
+                                        </TableCell>
                                     </TableRow>
                                 );
                             })}
