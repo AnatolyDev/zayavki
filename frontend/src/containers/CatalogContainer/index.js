@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Catalog from '../../components/Catalog';
+import TableOfData from '../../components/TableOfData';
 import { zayavkiAPI } from '../../api';
 import { connect } from 'react-redux';
 import { addUnit } from '../../actions/units.js';
+
+const columns = [
+    { id: 'name', label: 'Наименование', minWidth: 170 },
+    { id: 'code', label: 'Шифр', minWidth: 170 }
+]
 
 const CatalogContainer = (props) => {
 
@@ -19,8 +24,8 @@ const CatalogContainer = (props) => {
         []
     )
 
-    return (
-        <Catalog rows={rows} clickFunc={props.addUnit} buttonText='Добавить' />
+    return (        
+        <TableOfData columns={columns} rows={rows} buttonFunc={props.addUnit} buttonText='Добавить' />
     )
 }
 
@@ -29,28 +34,11 @@ const mapDispatchToProps = {
             return dispatch => {
                 setTimeout(
                     () => dispatch(addUnit(x)),
-                    2000
+                    1000
                 )
             }
         }  
 }
-
-/*const mapDispatchToProps = (dispatch) => ({
-    addUnit : (x) => {
-        const asyncAdd = () => {
-            return dispatch => {
-                setTimeout(
-                    () => dispatch(addUnit(x)),
-                    2000
-                )
-            }
-        }
-        dispatch(asyncAdd(x))
-        
-    }
-        
-    
-})*/
 
 export default connect(
     null,

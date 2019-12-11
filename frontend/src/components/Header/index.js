@@ -54,8 +54,18 @@ const Header = (props) => {
             </ListItem>              
           </NavLink>
 
+          <Divider />
+
+          <NavLink to='/zayavki' style={{textDecoration: 'none', color: grey}}>
+            <ListItem button onClick={toggleDrawer(false)}>
+              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+              <ListItemText primary='Заявки' style={{color: 'black'}}/>
+            </ListItem>              
+          </NavLink>
+
         </List>
-        <Divider />
+
+        
       </div>
     );
   

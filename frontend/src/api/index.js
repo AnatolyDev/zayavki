@@ -14,6 +14,37 @@ const instance =  axios.create(
 export const zayavkiAPI = {
     getAllZayavki() {
         //return instance.get(`/instrumentsList?instrument_type_code=${instrument_type_code}&page=${page}`)
+        return new Promise((resolve) => {            
+            setTimeout(
+                () => {
+                    resolve({
+                        'zayavki' : [
+                            {
+                                'id' : 101,
+                                'createrId' : 12,
+                                'createrName' : 'Андрей',
+                                'createDate' : '2011-01-26T13:51:50.417Z',
+                                'units' : []
+                            },
+                            {
+                                'id' : 102,
+                                'createrId' : 13,
+                                'createrName' : 'Александр',
+                                'createDate' : '2011-01-26T13:51:50.417Z',
+                                'units' : []
+                            },
+                            {
+                                'id' : 103,
+                                'createrId' : 12,
+                                'createrName' : 'Андрей',
+                                'createDate' : '2011-01-26T13:51:50.417Z',
+                                'units' : []
+                            }
+                        ]
+                    })
+                    
+                }, 1000)
+            })
     },
 
     getProcessors() {
