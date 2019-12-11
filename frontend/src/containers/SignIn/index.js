@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -35,6 +36,7 @@ const SignIn = (props) => {
 
     return (
         <>
+            {props.user && <Redirect to='/' />}
             <Container maxWidth="sm">
                 <Typography component="div" className='signin' >
                     <div>
