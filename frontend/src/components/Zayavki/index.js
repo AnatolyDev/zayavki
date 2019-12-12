@@ -25,7 +25,7 @@ const Zayavki = () => {
         []
     )
 
-    return (        
+    return (       
         <TableOfData columns={columns} rows={rows} buttonFunc={f} buttonText='Подробнее' />
     )
 }
